@@ -67,13 +67,20 @@ devfest.directive('navbar',function($route){
             angular.element(event.target.parentElement).addClass('active');
         });
     }
-})
+});
 
-devfest.controller('HomeControl', function($scope){
+devfest.controller('HomeControl', function($scope, Language){
+    $scope.Language = Language;
 
 });
 
-devfest.controller('NewsControl', function($scope, $http){
+devfest.controller('NavControl', function($scope, Language){
+    $scope.Language = Language;
+
+});
+
+devfest.controller('NewsControl', function($scope, $http, Language){
+    $scope.Language = Language;
     $http.
         jsonp('https://www.googleapis.com/plus/v1/activities?query=%23gdg+%23devfest+%23fresno&callback=JSON_CALLBACK&key=AIzaSyDssVSRzwj0vX4K3XsCVKJ-2LxCzXeiaNw').
         success(function(response){
@@ -95,7 +102,8 @@ devfest.controller('NewsControl', function($scope, $http){
 
 });
 
-devfest.controller('ScheduleControl', function($scope, $http){
+devfest.controller('ScheduleControl', function($scope, $http, Language){
+    $scope.Language = Language;
     $http.
         get('json/schedule.json').
         success(function(response){
@@ -108,7 +116,9 @@ devfest.controller('ScheduleControl', function($scope, $http){
         });
 });
 
-devfest.controller('SpeakersControl', function($scope, $http){
+
+devfest.controller('SpeakersControl', function($scope, $http, Language){
+    $scope.Language = Language;
     $http.
         get('json/speakers.json').
         success(function(response){

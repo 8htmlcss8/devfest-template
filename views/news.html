@@ -4,11 +4,11 @@
             <h5>{{ article.title }}</h5>
             <h6>{{ article.published | date:'MMMM d, y - h:mm a' }}</h6>
 
-            <h6><a ng-href="{{ article.actor.url }}" target="_blank">{{ article.actor.displayName }}</a> shared:</h6>
+            <h6><a ng-href="{{ article.actor.url }}" target="_blank">{{ article.actor.displayName }}</a> {{ Language.shared }}:</h6>
             <hr>
 
             <div ng-show="article.object.attachments[0].objectType=='article'">
-                <h6 ng-show="article.object.actor.displayName"><a ng-href="{{ article.object.actor.url }}">{{ article.object.actor.displayName }}</a> originally shared:</h6>
+                <h6 ng-show="article.object.actor.displayName"><a ng-href="{{ article.object.actor.url }}">{{ article.object.actor.displayName }}</a> {{ Language.originally_shared }}:</h6>
                 <h5><a ng-href="{{ article.object.attachments[0].url }}" target="_blank">{{ article.object.attachments[0].displayName }}</a></h5>
                 <p ng-bind-html-unsafe="article.object.attachments[0].content"></p>
             </div>
@@ -18,7 +18,7 @@
             </div>
 
             <div ng-show="article.object.attachments[0].objectType=='album'">
-                <p><a ng-href="{{ article.object.attachments[0].url }}" target="_blank">View Album</a></p>
+                <p><a ng-href="{{ article.object.attachments[0].url }}" target="_blank">{{ Language.view_album }}</a></p>
                 <ul class="list-unstyled" class="row">
                     <li ng-repeat="thumbnail in article.object.attachments[0].thumbnails">
                         <div class="col-md-6 col-sm-3 col-xs-6" style="margin-bottom:10px;">
